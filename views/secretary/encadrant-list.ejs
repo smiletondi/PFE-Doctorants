@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<%- include("../includes/head") %>
+
+<body>
+    <header class="container-fluid sticky-top">
+      <%- include('../includes/navbar',{page: 'encadrant'}) %>
+    </header>
+
+  <main class="container">
+    <% if (AL.length>0){ %>
+    <div>
+      <h2 class="text-justify">Liste des encadrants:</h2>
+      <hr>
+    </div>
+    <div class="row d-flex justify-content-around">
+      <% AL.forEach(elem=>{ %>
+      <div class="card shadow p-2 m-2 bg-white rounded" style="width: 18rem;">
+        <h4 class="card-title text-secondary text-center"><%= elem.nom %></h4>
+        <img class="card-img-top" src="<%= elem.profil %>" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="text-secondary text-center">CIN: <%= elem.cin %></h5>
+          <div class="text-center">
+            <form action="/secretary/encadrant-list %>" method="POST">
+              <input type="hidden" name="encId" value="<%= elem.id %>">
+              <button class='btn text-center btn-info' type="submit">Voir details</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <% }) } else { %>
+      <h1>Pas d'encadrant pour l'instant</h1>
+      <p>Veillez en ajouter !!</p>
+      <% } %>
+    </div>
+
+  </main>
+
+
+</body>
+
+</html>

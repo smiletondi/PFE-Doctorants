@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<%- include("../includes/head") %>
+
+<body>
+  <header class="container-fluid sticky-top">
+    <%- include('../includes/navbar',{page: 'these'}) %>
+  </header>
+
+  <main class="container">
+    <% if (AL.length>0){ %>
+    <div>
+      <h2 class="text-justify">Liste des theses:</h2>
+      <hr>
+    </div>
+    <div class="row d-flex justify-content-around">
+      <% AL.forEach(elem=>{ %>
+      <div class="card">
+        <div class="card-header">
+          <%= elem.intitule %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">encadr&eacute; par <%= 'Monsieur '+elem.encadrant.nom %></h5>
+          <p class="card-text">pr&eacute;par&eacute; par <%= elem.doctorant.nom+' '+elem.doctorant.prenom %>.</p>
+          <form action="/secretary/these-list" method="post">
+            <input type="hidden" name="thId" value="<%= elem.id %>">
+            <button class="btn btn-danger" type="submit">Supprimer</button>
+          </form>
+        </div>
+      </div>
+
+      <% }) } else { %>
+      <h1>Pas de these pour l'instant</h1>
+      <p>Veillez en ajouter !!</p>
+      <% } %>
+    </div>
+
+  </main>
+
+
+</body>
+
+</html>

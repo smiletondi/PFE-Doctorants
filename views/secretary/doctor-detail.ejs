@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<%- include("../includes/head") %>
+
+<body>
+    <header class="container-fluid">
+        <%- include("../includes/navbar",{page:'details du doctorant'}) %>
+    </header>
+    <main class="container ">
+        <div class="row ">
+            <div class="col-sm">
+                <div class="row ">
+                    <img class="mx-auto img-thumbnail img-responsive" src="<%= doc.profil %>" alt="Photo de profil">
+                </div>
+                <div class="row ">
+                    <form class="mx-auto" action="/secretary/doctorant-detail" method="post">
+                        <input type="hidden" name="docId" value="<%= doc.id %>">
+                        <button class="btn btn-danger" type="submit">Supprimer</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm">
+                <h3>Details du doctorant</h3>
+                <p>Nom: <%= doc.nom %></p>
+                <p>prenom: <%= doc.prenom %></p>
+                <p>CNE: <%= doc.cne %></p>
+                <p>CIN: <%= doc.cin %></p>
+                <p>Sexe: <%= doc.sexe %></p>
+                <p>Date de naissance: <%= doc.dateNaiss %></p>
+                <p>Lieu de naissance: <%= doc.lieuNaiss %></p>
+                <p>Nationnalite: <%= doc.nationalite %></p>
+                <p>Situation Familliale: <%= doc.situationFam %></p>
+                <p>Adresse: <%= doc.adresse %></p>
+                <p>Specialite: <%= doc.specialite %></p>
+                <p>Telephone: <%= doc.tel %></p>
+                <p>Email: <%= doc.email %></p>
+                <p>Bourse: <%= doc.bourse? 'Oui':'Non' %></p>
+                <p>Dernier Diplome: <%= doc.dernierDiplome %></p>
+                <p>Annee du dernier Diplome: <%= doc.anneeDiplome %></p>
+            </div>
+        </div>
+    </main>
+
+
+</body>
+
+</html>

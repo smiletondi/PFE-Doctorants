@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<%- include("../includes/head") %>
+
+<body>
+  <header class="container-fluid sticky-top">
+    <%- include('../includes/navbar', { page:'doctorant'}) %>
+  </header>
+  <main class="container">
+    <div>
+      <h3 class="text-secondary">Veuillez saisir les informations du doctorant:</h3>
+      <hr>
+    </div>
+
+    <div class="container">
+      <form method="POST" action="/secretary/add-doctor">
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="prenom">Prenom</label>
+            <input value="Samba" type="text" class="form-control" name="prenom" id="prenom" placeholder="Votre prenom">
+          </div>
+          <div class="form-group col">
+            <label for="nom">Nom</label>
+            <input value="Mehdi" type="text" class="form-control" name="nom" id="nom" placeholder="Votre Nom">
+          </div>
+          <div class="form-group col-6">
+            <label for="profil">Photo de profil</label>
+            <input value="https://picsum.photos/200" type="text" class="form-control" name="profil" id="profil"
+              placeholder="Entrer l'URL de votre image de profil">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col">
+            <label>Sexe:</label>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="masc" value="masculin" name="sexe" class="custom-control-input">
+              <label class="custom-control-label" for="masc">Masculin</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="fem" value="feminin" name="sexe" class="custom-control-input">
+              <label class="custom-control-label" for="fem">Feminin</label>
+            </div>
+          </div>
+          <div class="form-group col-3">
+            <label>Situation Familiale:</label>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="celibat" value="celibataire" name="sitFam" class="custom-control-input">
+              <label class="custom-control-label" for="celibat">Celibataire</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="marie" value="marie" name="sitFam" class="custom-control-input">
+              <label class="custom-control-label" for="marie">Marie</label>
+            </div>
+          </div>
+          <div class="form-group col">
+            <label for="cin">CIN:</label>
+            <input value="jk7493643" type="text" class="form-control" name="cin" id="cin" placeholder="Votre CIN">
+          </div>
+          <div class="form-group col">
+            <label for="cne">CNE:</label>
+            <input value="19-19891092" type="text" class="form-control" name="cne" id="cne" placeholder="Votre CNE">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="dateNaiss">Date de naissance</label>
+            <input value="2000-05-01 16:17:09" type="datetime" class="form-control" name="dateNaiss" id="dateNaiss">
+          </div>
+          <div class="form-group col">
+            <label for="lieuNaiss">Lieu de Naissance</label>
+            <input value="Agadir" type="text" class="form-control" name="lieuNaiss" id="lieuNaiss"
+              placeholder="Votre lieu de naissance">
+          </div>
+          <div class="form-group col">
+            <label for="nation">Nationnalite</label>
+            <input value="Africain" type="text" class="form-control" name="nation" id="nation" placeholder="Votre nationnalite">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="adress">Adresse:</label>
+            <input value="Agadir" type="text" class="form-control" name="adress" id="adress" placeholder="Votre adresse">
+          </div>
+          <div class="form-group col">
+            <label for="special">Specialite:</label>
+            <input value="blabla" type="text" class="form-control" name="special" id="special" placeholder="Votre specialite">
+          </div>
+          <div class="form-group col">
+            <label for="tel">Telephone:</label>
+            <input value="0666666666" type="text" class="form-control" name="tel" id="tel" placeholder="Votre telephone">
+          </div>
+          <div class="form-group col">
+            <label for="email">Email:</label>
+            <input value="email@email.com" type="text" class="form-control" name="email" id="email" placeholder="Votre email">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="">Bourse:</label>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="bOui" value=1 name="bourse" class="custom-control-input">
+              <label class="custom-control-label" for="bOui">Oui</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="bNon" value=0 name="bourse" class="custom-control-input">
+              <label class="custom-control-label" for="bNon">Non</label>
+            </div>
+          </div>
+          <div class="form-group col">
+            <label for="ddiplome">Dernier Diplome</label>
+            <input value="Master" type="text" class="form-control" name="ddiplome" id="ddiplome" placeholder="Votre dernier diplome">
+          </div>
+          <div class="form-group col">
+            <label for="annDiplome">Annee d'obtention du dernier diplome</label>
+            <input value="2014" type="number" class="form-control" name="annDiplome" id="annDiplome"
+              placeholder="L'annee d'obtention du dernier diplome">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success">Ajouter</button>
+      </form>
+    </div>
+  </main>
+
+</body>
+
+</html>

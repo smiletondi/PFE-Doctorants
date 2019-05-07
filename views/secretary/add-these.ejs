@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<%- include("../includes/head") %>
+
+<body>
+    <header class="container-fluid sticky-top">
+        <%- include('../includes/navbar', {page: 'these'}) %>
+    </header>
+    <main class="container">
+        <div>
+            <h3 class="text-secondary">Veuillez configurer la th&egrave;se:</h3>
+            <hr>
+        </div>
+
+        <article>
+            <form action="/secretary/add-these" method="post">
+                <h5>
+                    L'encadrant <select class="col-2 custom-select" name="encadrant" required>
+                        <% if(encadrants.length>0){ %>
+                        <option selected disabled>ENCADRANT</option>
+                        <% encadrants.forEach(enc=>{ %>
+                        <option value="<%= enc.id %>"><%= enc.nom %></option>
+                        <% })} else { %>
+                        <option selected disabled>Ajouter un encadrant</option>
+                        <% } %>
+                    </select>
+                    propose <input class="col-3 form-control-lg" type="text" name="intitule"
+                        placeholder="l'intitule de la these">
+                    comme th&egrave;se &agrave; <select class="col-2 custom-select" name="doctorant" required>
+                        <% if(doctorants.length>0){ %>
+                        <option selected disabled>DOCTORANT</option>
+                        <% doctorants.forEach(doc=>{ %>
+                        <option value="<%= doc.id %>"><%= doc.nom %></option>
+                        <% })} else { %>
+                        <option selected disabled>Ajouter un doctorant</option>
+                        <% } %>
+                    </select>
+                </h5>
+                <div>
+                    <button class="btn btn-success" type="submit">Valider</button>
+                </div>
+            </form>
+        </article>
+    </main>
+
+</body>
+
+</html>
