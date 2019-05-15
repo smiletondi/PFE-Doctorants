@@ -1,15 +1,8 @@
-const Sequelize = require('sequelize');
-const sequelize = require('../util/database');
+const mongoose= require('mongoose');
 
-const Secretary= sequelize.define('secretary', {
-    id: {
-        type: Sequelize.INTEGER,
-        allowNull:false,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    username: Sequelize.STRING,
-    pass: Sequelize.STRING
+const secretarySchema= mongoose.Schema({
+    username: String,
+    pass: String
 });
 
-module.exports = Secretary;
+module.exports= mongoose.model('Secretary', secretarySchema);

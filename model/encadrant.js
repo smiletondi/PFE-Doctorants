@@ -1,22 +1,27 @@
-const Sequelize= require('Sequelize');
-const sequelize= require('../util/database');
+const mongoose= require('mongoose');
+const These= require('./these');
 
-const Encadrant= sequelize.define('encadrant', {
-    id:{
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-        allowNull: false
+const encadrantSchema= mongoose.Schema({
+    nom: String,
+    prenom: String,
+    profil: String,
+    cin: String,
+    dateNaiss: {
+        type: Date,
+        required: true,
+        default: Date.now
     },
-    nom: Sequelize.STRING,
-    prenom: Sequelize.STRING,
-    profil: Sequelize.STRING,
-    cin: Sequelize.STRING,
-    dateNaiss: Sequelize.DATE,
-    lieuNaiss: Sequelize.STRING,
-    specialite:Sequelize.STRING,
-    tel: Sequelize.INTEGER,
-    email: Sequelize.STRING
-})
+    lieuNaiss: String,
+    specialite: String,
+    tel: Number,
+    email: String
+    
+});
 
-module.exports=Encadrant;
+encadrantSchema.pre('remove', next=>{
+    // These.findOne()
+    console.log('Removing '+this._id);
+    next();
+});
+
+module.exports = mongoose.model('Encadrant', encadrantSchema);

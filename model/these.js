@@ -1,14 +1,17 @@
-const Sequelise= require('sequelize');
-const sequelize= require('../util/database');
+const mongoose= require('mongoose');
 
-const These= sequelize.define('these',{
-    id: {
-        type: Sequelise.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-        allowNull: false
+const secretarySchema= mongoose.Schema({
+    intitule: String,
+    doctId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Doctorant',
+        required: true
     },
-    intitule: Sequelise.STRING
+    encId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Encadrant',
+        required: true
+    }
 });
 
-module.exports= These;
+module.exports= mongoose.model('Secretary', secretarySchema);

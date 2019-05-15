@@ -1,20 +1,21 @@
-const Sequelize = require('sequelize');
-const sequelize = require('../util/database');
+const mongoose= require('mongoose');
 
-const Admin= sequelize.define('admin', {
-    id: {
-        type: Sequelize.INTEGER,
-        allowNull:false,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    username: Sequelize.STRING,
-    pass: Sequelize.STRING
+const adminSchema= mongoose.Schema({
+    username: String,
+    pass: String
 });
 
-Admin.findOrCreate({ where: {
-    username: 'admin',
-    pass: 'admin'
-}}).then(a=> console.log("admin cree"))
-.catch(err=>console.log(err));
-module.exports = Admin;
+const Admin= mongoose.model('Admin', adminSchema);
+
+Admin.findOne().then(admin=>{
+    if(!admin){
+        const admin= new Admin({
+            username: 'admin',
+            pass: 'admin'
+        });
+    }
+    return admin.save();
+}).then(()=> console.log("admin created"))
+.catch(err=> console.error(err));
+
+module.exports= Admin;

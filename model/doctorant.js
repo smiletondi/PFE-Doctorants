@@ -1,82 +1,98 @@
-const Sequelize = require('sequelize');
-// const Sequelize = require('sequelize-mock')
-const sequelize = require('../util/database');
+const mongoose= require('mongoose');
+const These= require('./these');
 
-const Doctorant = sequelize.define('doctorant', {
-    id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-        allowNull: false
+const doctorantSchema= mongoose.Schema({
+    nom : {
+        type: String,
+        required: true,
+        default: 'Mehdi'
     },
-    nom: {
-        type: Sequelize.STRING,
-        defaultValue: 'Mehdi'
+    prenom : {
+        type: String,
+        required: true,
+        default: 'Samba'
     },
-    prenom: {
-        type: Sequelize.STRING,
-        defaultValue: "Samba"
+    profil : {
+        type: String,
+        required: true,
+        default: 'https://picsum.photos/200'
     },
-    profil: {
-        type: Sequelize.STRING,
-        defaultValue: "https://picsum.photos/200"
+    sexe : {
+        type: String,
+        required: true,
+        default: 'Masculin'
     },
-    sexe: {
-        type: Sequelize.STRING,
-        defaultValue: "Masculin"
+    cin : {
+        type: String,
+        required: true,
+        default: 'jk7493643'
     },
-    cin: {
-        type: Sequelize.STRING,
-        defaultValue: "jk7493643"
+    cne : {
+        type: String,
+        required: true,
+        default: '19-19891092'
     },
-    cne: {
-        type: Sequelize.STRING,
-        defaultValue: "19-19891092"
+    dateNaiss : {
+        type: Date,
+        required: true,
+        default: Date.now
     },
-    dateNaiss: {
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW
+    lieuNaiss : {
+        type: String,
+        required: true,
+        default: 'Agadir'
     },
-    lieuNaiss: {
-        type: Sequelize.STRING,
-        defaultValue: "Agadir"
+    nationnalite : {
+        type: String,
+        required: true,
+        default: 'Africain'
     },
-    nationalite: {
-        type: Sequelize.STRING,
-        defaultValue: "Africain"
+    situationFam : {
+        type: String,
+        required: true,
+        default: 'Celibataire'
     },
-    situationFam: {
-        type: Sequelize.STRING,
-        defaultValue: "Celibataire"
+    adresse : {
+        type: String,
+        required: true,
+        default: 'Agadir'
     },
-    adresse: {
-        type: Sequelize.STRING,
-        defaultValue: "Agadir"
+    specialite : {
+        type: String,
+        required: true,
+        default: 'Informatique'
     },
-    specialite: {
-        type: Sequelize.STRING,
-        defaultValue: "blabla"
+    tel : {
+        type: Number,
+        required: true,
+        default: 0666666666
     },
-    tel: {
-        type: Sequelize.INTEGER,
-        defaultValue: 0666666666
+    email : {
+        type: String,
+        required: true,
+        default: 'doctorant@fsa.ac.ma'
     },
-    email: {
-        type: Sequelize.STRING,
-        defaultValue: 'email@email.com'
+    bourse : {
+        type: Boolean,
+        required: true,
+        default: false
     },
-    bourse: {
-        type: Sequelize.STRING,
-        defaultValue: false
+    dernierDiplome : {
+        type: String,
+        required: true,
+        default: 'Master'
     },
-    dernierDiplome: {
-        type: Sequelize.STRING,
-        defaultValue: "Master"
-    },
-    anneeDiplome: {
-        type: Sequelize.INTEGER,
-        defaultValue: 2014
+    anneeDiplome : {
+        type: Number,
+        required: true,
+        default: 2019
     }
-})
+});
 
-module.exports = Doctorant;
+doctorantSchema.pre('remove', next=>{
+    // These.findOne()
+    console.log('Removing '+this._id);
+    next();
+});
+
+module.exports = mongoose.model('Doctorant', doctorantSchema);

@@ -3,10 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const Admin = require('./model/admin'); 
-const Secretary = require('./model/secretary');
-const Encadrant = require('./model/encadrant');
-const These = require('./model/these');
+// const Admin = require('./model/admin'); 
+// const Secretary = require('./model/secretary');
+// const Encadrant = require('./model/encadrant');
+// const These = require('./model/these');
 
 var indexRouter = require('./routes/index');
 const adminRouter = require("./routes/admin");
@@ -25,6 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Routes setup
 app.use('/', indexRouter);
 app.use("/admin", adminRouter);
 app.use("/secretary", secretaryRouter);
