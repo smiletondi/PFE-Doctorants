@@ -13,8 +13,8 @@ Admin.findOne().then(admin=>{
             username: 'admin',
             pass: 'admin'
         });
+        return admin.save();
     }
-    return admin.save();
 }).then(()=> console.log("admin created"))
 .catch(err=> console.error(err));
 

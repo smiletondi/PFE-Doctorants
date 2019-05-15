@@ -7,9 +7,6 @@ const mongoose= require('mongoose');
 var app = require('../app');
 var debug = require('debug')('doctor1:server');
 var http = require('http');
-const These = require('../model/these');
-const Doctorant = require('../model/doctorant');
-const Encadrant = require('../model/encadrant');
 
 /**
  * Get port from environment and store in Express.
@@ -99,7 +96,7 @@ function onListening() {
  * Listen on provided port, on all network interfaces.
  */
 const url= 'mongodb+srv://smi:smi@cluster0-xx8yn.mongodb.net/test?retryWrites=true';
-mongoose.connect(url).then(()=>{
+mongoose.connect(url, { useNewUrlParser: true }).then(()=>{
   console.log('Connected successfully with mongoose')
   server.listen(port);
   server.on('error', onError);

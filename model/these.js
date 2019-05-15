@@ -1,6 +1,6 @@
 const mongoose= require('mongoose');
 
-const secretarySchema= mongoose.Schema({
+const theseSchema= mongoose.Schema({
     intitule: String,
     doctId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -14,4 +14,4 @@ const secretarySchema= mongoose.Schema({
     }
 });
 
-module.exports= mongoose.model('Secretary', secretarySchema);
+module.exports= mongoose.model('These', theseSchema);
