@@ -2,12 +2,12 @@ const mongoose= require('mongoose');
 
 const theseSchema= mongoose.Schema({
     intitule: String,
-    doctId: {
+    doctorantId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Doctorant',
         required: true
     },
-    encId: {
+    encadrantId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Encadrant',
         required: true

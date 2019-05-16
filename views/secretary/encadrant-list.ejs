@@ -22,7 +22,7 @@
           <h5 class="text-secondary text-center">CIN: <%= elem.cin %></h5>
           <div class="text-center">
             <form action="/secretary/encadrant-list %>" method="POST">
-              <input type="hidden" name="encId" value="<%= elem.id %>">
+              <input type="hidden" name="encId" value="<%= elem._id %>">
               <button class='btn text-center btn-info' type="submit">Voir details</button>
             </form>
           </div>

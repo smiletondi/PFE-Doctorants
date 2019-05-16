@@ -19,7 +19,7 @@
                         <% if(encadrants.length>0){ %>
                         <option selected disabled>ENCADRANT</option>
                         <% encadrants.forEach(enc=>{ %>
-                        <option value="<%= enc.id %>"><%= enc.nom %></option>
+                        <option value="<%= enc._id %>"><%= enc.nom %></option>
                         <% })} else { %>
                         <option selected disabled>Ajouter un encadrant</option>
                         <% } %>
@@ -30,7 +30,7 @@
                         <% if(doctorants.length>0){ %>
                         <option selected disabled>DOCTORANT</option>
                         <% doctorants.forEach(doc=>{ %>
-                        <option value="<%= doc.id %>"><%= doc.nom %></option>
+                        <option value="<%= doc._id %>"><%= doc.nom %></option>
                         <% })} else { %>
                         <option selected disabled>Ajouter un doctorant</option>
                         <% } %>

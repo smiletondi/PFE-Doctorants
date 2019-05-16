@@ -18,10 +18,12 @@ const encadrantSchema= mongoose.Schema({
     
 });
 
-encadrantSchema.pre('remove', next=>{
-    // These.findOne()
-    console.log('Removing '+this._id);
-    next();
-});
+encadrantSchema.methods.delThese= function(){
+    These.deleteOne({encadrantId: this._id})
+        .then(these=>{
+            console.log('Removing '+ these.intitule);
+            next();
+        });
+};
 
 module.exports = mongoose.model('Encadrant', encadrantSchema);

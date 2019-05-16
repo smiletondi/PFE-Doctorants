@@ -20,10 +20,10 @@
           <%= elem.intitule %>
         </div>
         <div class="card-body">
-          <h5 class="card-title">encadr&eacute; par <%= 'Monsieur '+elem.encadrant.nom %></h5>
-          <p class="card-text">pr&eacute;par&eacute; par <%= elem.doctorant.nom+' '+elem.doctorant.prenom %>.</p>
+          <h5 class="card-title">encadr&eacute; par <%= 'Monsieur '+elem.encadrantId.nom %></h5>
+          <p class="card-text">pr&eacute;par&eacute; par <%= elem.doctorantId.nom+' '+elem.doctorantId.prenom %>.</p>
           <form action="/secretary/these-list" method="post">
-            <input type="hidden" name="thId" value="<%= elem.id %>">
+            <input type="hidden" name="thId" value="<%= elem._id %>">
             <button class="btn btn-danger" type="submit">Supprimer</button>
           </form>
         </div>

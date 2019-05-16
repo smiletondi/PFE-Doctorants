@@ -8,7 +8,7 @@ var logger = require('morgan');
 // Importing Routes
 var indexRouter = require('./routes/index');
 const adminRouter = require("./routes/admin");
-// const secretaryRouter = require("./routes/secretary");
+const secretaryRouter = require("./routes/secretary");
 // var usersRouter = require('./routes/users');
 
 var app = express();
@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes setup
 app.use('/', indexRouter);
 app.use("/admin", adminRouter);
-// app.use("/secretary", secretaryRouter);
+app.use("/secretary", secretaryRouter);
 // app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
