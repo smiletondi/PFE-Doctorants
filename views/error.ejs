@@ -3,13 +3,13 @@
 <%- include("includes/head", { title: 'Error'}) %>
 
 <body>
-    <header class="container-fluid ">
+    <header class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark bg-info rounded">
             <a class="navbar-brand" href="/">SMI PFE</a>
         </nav>
     </header>
 
-    <main class="container">
+    <main class="container animated fadeIn">
         <h1><%= message %></h1>
         <h2><%= error.status %></h2>
         <pre><%= error.stack %></pre>
