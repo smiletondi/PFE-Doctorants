@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
+const flash= require('connect-flash');
 
 // Importing Routes
 var indexRouter = require('./routes/index');
@@ -35,6 +36,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
+app.use(flash());
 
 // Routes setup
 app.use('/', indexRouter);
